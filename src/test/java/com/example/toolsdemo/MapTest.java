@@ -34,27 +34,13 @@ public class MapTest extends ToolsDemoApplicationTests{
         double aftLon = 116.982440321181;
         double aftLat = 39.164154188369;
 
-        Point point = MapUtil.convertEarth2Mars(longitude,latitude);
-        Assert.assertNotNull(point);
-
         Gps gps = PositionUtil.gps84_To_Gcj02(longitude,latitude);
         Assert.assertNotNull(gps);
 
-        String location = Transform.wgs84togcj02(longitude,latitude);
-        Assert.assertNotNull(location);
-
         System.out.println("转换前经纬度：{"+ latitude+","+longitude+"}");
-//        System.out.println("转换后经纬度1："+ JSON.toJSON(point));
-        System.out.println("转换后经纬度2："+ JSON.toJSON(gps));
-//        double lng=Double.parseDouble(location.split(",")[0]);
-//        double lat=Double.parseDouble(location.split(",")[1]);
-//        System.out.println("转换后经纬度3："+ lat+","+lng);
+        System.out.println("转换后经纬度："+ JSON.toJSON(gps));
 
-        double distince1 = LocationUtil.getDistance(aftLat,aftLon,point.getLat(),point.getLon());
-        double distince2 = LocationUtil.getDistance(aftLat,aftLon,gps.getWgLat(),gps.getWgLon());
-//        double distince3 = LocationUtil.getDistance(aftLat,aftLon,lat,lng);
-//        System.out.println("偏移距离1："+distince1+"米");
-        System.out.println("偏移距离2："+distince2+"米");
-//        System.out.println("偏移距离3："+distince3+"米");
+        double distince = LocationUtil.getDistance(aftLat,aftLon,gps.getWgLat(),gps.getWgLon());
+        System.out.println("偏移距离："+distince+"米");
     }
 }

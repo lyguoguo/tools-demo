@@ -12,14 +12,15 @@ import java.util.Map;
  * @date:2019/4/29
  **/
 public class LocationUtil {
+
     /**
      * 圆周率
      */
-    private final static double PI = CoordinateConverter.PI;
+    private final static double PI = Math.PI;
     /**
      * 地球的半径
      */
-    public final static double R  = CoordinateConverter.AXIS;
+    public final static double R  = 6378245.0;
 
     /**
      * 获取geohash值
